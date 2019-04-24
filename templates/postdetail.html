@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Post detail</title>
+</head>
+<body>
+{{postdetail.title}}
+{{postdetail.description}}
+{{postdetail.image}}
+{{postdetail.date_created}}
+{{postdetail.author}}
+<h5>Comments</h5><hr>
+	{% for comment in postdetail.comments.all %}
+	<li>{{comment.comment}} by {{comment.comment_by.username}}</li>
+	{% endfor %}
+		<form method="POST" action="{% url 'newsapp:commentcreate' postdetail.id %}">
+		{% csrf_token %}
+		{{commentform.as_p}}
+	<button> Post </button>
+</body>
+</html>

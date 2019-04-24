@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+		{% for post in postlist %}
+		<a href="{% url 'newsapp:postdetail post.id %}">{{ post.title }}</a>
+		{% endfor %}
+
+{% endblock %}
